@@ -1,0 +1,17 @@
+{
+  "name": "shailesh-dhoundiyal-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Shailesh Dhoundiyal — Software Engineer",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "portfolio",
+    "software-engineer",
+    "backend"
+  ],
+  "author": "Shailesh Dhoundiyal",
+  "license": "MIT"
+}
