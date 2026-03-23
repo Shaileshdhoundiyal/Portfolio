@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shailesh Dhoundiyal — Software Engineer</title>
     <meta name="description" content="Portfolio of Shailesh Dhoundiyal — Software Engineer specializing in scalable backend systems, microservices, and AI-driven solutions.">
+    <meta name="theme-color" content="#06060b">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Shailesh Dhoundiyal — Software Engineer">
+    <meta property="og:description" content="Building scalable, distributed backend systems serving 50K+ users. Specializing in microservices, AI/RAG, and event-driven architectures.">
+    <meta property="og:image" content="profile.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%2306060b'/><text x='50' y='68' font-size='50' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%2300d4ff'>&lt;/&gt;</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <span class="loader-logo"><span class="logo-bracket">&lt;</span>SD<span class="logo-bracket">/&gt;</span></span>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+        </div>
+    </div>
+
     <!-- Animated Background -->
     <div class="bg-grid"></div>
     <div class="bg-glow bg-glow-1"></div>
@@ -22,6 +39,10 @@
             <a href="#hero" class="nav-logo">
                 <span class="logo-bracket">&lt;</span>SD<span class="logo-bracket">/&gt;</span>
             </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
@@ -58,6 +79,9 @@
                     </a>
                     <a href="#projects" class="btn btn-secondary">
                         <span class="btn-icon">🚀</span> View Projects
+                    </a>
+                    <a href="resume.pdf" download class="btn btn-secondary">
+                        <span class="btn-icon">📄</span> Download Resume
                     </a>
                 </div>
                 <div class="hero-socials">
@@ -343,9 +367,18 @@
                     </div>
                     <h3 class="project-title">Apollo Voice-Based Healthcare System</h3>
                     <p class="project-company">Hexaview Technologies</p>
+                    <div class="project-screenshot">
+                        <img src="apollo-screenshot.png" alt="Apollo Healthcare Kiosk Interface" loading="lazy">
+                    </div>
                     <p class="project-description">
-                        Architected a multi-tenant, microservice-based backend for a kiosk-driven 
-                        healthcare assistant deployed across 10+ Apollo Hospital facilities.
+                        A conversational AI-powered kiosk system deployed across <strong>10+ Apollo Hospital</strong> facilities 
+                        for patient registration, appointment booking, self-billing, way-finding, and printing health records — 
+                        all through natural voice interaction.
+                    </p>
+                    <p class="project-description">
+                        Built the backend using a <strong>Multi-Agentic AI flow</strong> with LangChain and LangGraph, 
+                        where AI agents use tool calls to invoke backend APIs for database operations, 
+                        registration workflows, and navigation services in real-time.
                     </p>
                     <div class="project-metrics">
                         <div class="project-metric">
@@ -357,15 +390,44 @@
                             <span class="metric-label">AI Accuracy</span>
                         </div>
                         <div class="project-metric">
-                            <span class="metric-value">40%</span>
-                            <span class="metric-label">Faster Response</span>
+                            <span class="metric-value">1K+</span>
+                            <span class="metric-label">Concurrent Sessions</span>
                         </div>
                     </div>
                     <div class="project-tags">
+                        <span class="tag">LangChain</span>
+                        <span class="tag">LangGraph</span>
+                        <span class="tag">Multi-Agent AI</span>
+                        <span class="tag">Tool Calls</span>
                         <span class="tag">Microservices</span>
-                        <span class="tag">Agentic AI</span>
                         <span class="tag">Redis</span>
-                        <span class="tag">Multi-Tenant</span>
+                    </div>
+                </div>
+
+                <!-- Aksigen IVF -->
+                <div class="project-card glass-card reveal">
+                    <div class="project-header">
+                        <span class="project-icon">🧬</span>
+                    </div>
+                    <h3 class="project-title">Aksigen — IVF Knowledge Assistant</h3>
+                    <p class="project-company">Hexaview Technologies</p>
+                    <p class="project-description">
+                        A conversational <strong>RAG-based AI system</strong> for an IVF center that ingests 
+                        multiple knowledge sources — PDFs, medical books, research papers, and institutional documents — 
+                        to answer patient queries intelligently.
+                    </p>
+                    <p class="project-description">
+                        Users can understand IVF processes, learn about machines & equipment, 
+                        explore doctor profiles, and get myth-busting answers about fertility treatments 
+                        — all through natural conversation.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">Vector Database</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">PDF Ingestion</span>
+                        <span class="tag">Conversational AI</span>
+                        <span class="tag">NestJS</span>
                     </div>
                 </div>
 
@@ -542,9 +604,16 @@
                         <span class="contact-value">Shaileshdhoundiyal</span>
                     </a>
                 </div>
-                <a href="mailto:shaileshdhoundiyal1999@gmail.com" class="btn btn-primary btn-large">
-                    <span class="btn-icon">✉</span> Say Hello
-                </a>
+                <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                        <input type="email" name="email" placeholder="Your Email" required class="form-input">
+                    </div>
+                    <textarea name="message" placeholder="Your Message" rows="5" required class="form-input form-textarea"></textarea>
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <span class="btn-icon">✉</span> Send Message
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -569,6 +638,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
 
     <script src="script.js"></script>
 </body>

@@ -39,27 +39,31 @@ function typeEffect() {
     setTimeout(typeEffect, speed);
 }
 
-// Start typing after page load
 window.addEventListener('load', () => {
     setTimeout(typeEffect, 1500);
+});
+
+// =============================================
+// PAGE LOADER
+// =============================================
+window.addEventListener('load', () => {
+    const loader = document.getElementById('pageLoader');
+    setTimeout(() => {
+        loader.classList.add('hidden');
+    }, 1800);
 });
 
 // =============================================
 // NAVBAR SCROLL EFFECT
 // =============================================
 const navbar = document.getElementById('navbar');
-let lastScrollY = 0;
 
 window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
-    
-    if (currentScrollY > 50) {
+    if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
-    lastScrollY = currentScrollY;
 });
 
 // =============================================
@@ -74,7 +78,6 @@ navToggle.addEventListener('click', () => {
     document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
 });
 
-// Close menu when clicking a link
 navLinks.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
@@ -118,7 +121,6 @@ const revealElements = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-            // Stagger the animation for items in same section
             setTimeout(() => {
                 entry.target.classList.add('active');
             }, index * 100);
@@ -191,8 +193,40 @@ document.addEventListener('mousemove', (e) => {
     
     badges.forEach((badge, index) => {
         const speed = (index + 1) * 8;
-        const x = mouseX * speed;
-        const y = mouseY * speed;
-        badge.style.transform = `translate(${x}px, ${y}px)`;
+        badge.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
     });
+});
+
+// =============================================
+// DARK / LIGHT MODE TOGGLE
+// =============================================
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+}
+
+themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+});
+
+// =============================================
+// BACK TO TOP BUTTON
+// =============================================
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
